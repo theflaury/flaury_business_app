@@ -4,9 +4,15 @@ part of 'app_pages.dart';
 abstract class Routes {
   Routes._();
   static const SPLASHSCREEN = _Paths.SPLASHSCREEN;
+  static const ONBOARDING = _Paths.ONBOARDING;
+  static const LOGIN = _Paths.LOGIN;
+  static const SIGNUP = _Paths.SIGNUP;
 }
 
 abstract class _Paths {
   _Paths._();
   static const SPLASHSCREEN = '/splashscreen';
+  static const ONBOARDING = '/onboarding';
+  static const LOGIN = '/login';
+  static const SIGNUP = '/signup';
 }

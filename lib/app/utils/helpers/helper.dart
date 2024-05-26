@@ -1,45 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../widgets/apptext.dart';
-import '../theme/colors.dart';
 
 class AppHelpers {
-  static Color? getColor(String value) {
-    switch (value) {
-      case "primary":
-        return AppColors.primary;
-      case "secondary":
-        return AppColors.secondary;
-      case "accent":
-        return AppColors.accent;
-      case "black":
-        return AppColors.black;
-      case "white":
-        return AppColors.white;
-      case "green":
-        return Colors.green;
-      case "red":
-        return AppColors.red;
-      case "yellow":
-        return AppColors.yellow;
-      case "pink":
-        return AppColors.pink;
-      case "purple":
-        return AppColors.purple;
-      case "orange":
-        return Colors.orange;
-      case "grey":
-        return AppColors.grey;
-      case "darkgrey":
-        return AppColors.darkgrey;
-      case "lime":
-        return Colors.limeAccent;
-      case "blue":
-        return Colors.blue;
-    }
-    return null;
+  static void showLoader() {
+    Get.dialog(
+      AlertDialog(
+        content: Row(
+          children: [
+            const CircularProgressIndicator(),
+            const SizedBox(width: 10),
+            BigAppText("Please wait..."),
+          ],
+        ),
+      ),
+    );
   }
-
   static void showSnackBar(String message) {
     Get.snackbar(
       "",

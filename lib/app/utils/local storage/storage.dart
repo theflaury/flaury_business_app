@@ -1,4 +1,5 @@
 import 'package:get_storage/get_storage.dart';
+import 'dart:async';
 
 class AppLocalStorage{
   static final AppLocalStorage _instance = AppLocalStorage._internal();
@@ -29,3 +30,4 @@ class AppLocalStorage{
   }
 
 }
+
