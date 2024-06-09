@@ -3,32 +3,38 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../utils/theme/colors.dart';
 import 'apptext.dart';
 import 'space.dart';
+import 'package:intl_phone_field/intl_phone_field.dart';
 
-class AppMultiLineTextFormField extends StatelessWidget {
-  const AppMultiLineTextFormField({
-    super.key,
-    this.obscureText = false,
-    this.controller,
-    this.hint,
-    this.label,
-    this.prefixIcon,
-    this.suffixIcon,
-    this.keyboardType,
-    this.validator,
-    this.maxLines,
-    this.textInputAction,
-  });
+class AppTextFormField extends StatelessWidget {
+  const AppTextFormField(
+      {super.key,
+      this.obscureText = false,
+      this.controller,
+      this.hint,
+      this.label,
+      this.prefixIcon,
+      this.suffixIcon,
+      this.keyboardType,
+      this.validator,
+      this.onSaved,
+      this.color,
+      this.bordercolor,
+      required TextInputAction textInputAction,
+      this.fontsize});
 
   final bool obscureText;
   final TextEditingController? controller;
   final String? hint;
   final String? label;
-  final IconButton? prefixIcon;
+  final Icon? prefixIcon;
   final IconButton? suffixIcon;
   final TextInputType? keyboardType;
   final FormFieldValidator<String>? validator;
-  final int? maxLines;
-  final TextInputAction? textInputAction;
+  final Function? onSaved;
+  final Color? color;
+  final Color? bordercolor;
+  final double? fontsize;
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -36,40 +42,48 @@ class AppMultiLineTextFormField extends StatelessWidget {
       children: [
         Visibility(
           visible: label != null,
-          child: SmallAppText(
+          child: MedAppText(
             label ?? '',
             color: AppColors.black,
-            fontSize: 16.sp,
+            fontSize: 18.sp,
+            fontWeight: FontWeight.bold,
           ),
         ),
-        vSpace(5),
+        vSpace(10),
         TextFormField(
           autovalidateMode: AutovalidateMode.onUserInteraction,
           obscureText: obscureText,
           controller: controller,
           keyboardType: keyboardType,
-          textInputAction: textInputAction,
-          maxLines: maxLines,
+          onSaved: onSaved as void Function(String?)?,
+
           decoration: InputDecoration(
-            border: OutlineInputBorder(
-              borderSide:
-                  const BorderSide(color: AppColors.grey), // Grey border
-              borderRadius: BorderRadius.circular(10),
-            ),
-            focusedBorder: OutlineInputBorder(
-              borderSide:
-                  const BorderSide(color: AppColors.primary), // Grey border
-              borderRadius: BorderRadius.circular(10),
-            ),
-            prefixIcon: prefixIcon,
-            suffixIcon: suffixIcon,
-            hintText: hint,
-            hintStyle: TextStyle(color: AppColors.grey, fontSize: 12.sp),
-            labelStyle: const TextStyle(
-                color: AppColors.black), // Customize label text color
-          ),
-          style:
-              const TextStyle(color: AppColors.black), // Customize text color
+              focusedBorder: OutlineInputBorder(
+                borderSide: BorderSide(
+                    color: bordercolor ?? AppColors.primary, width: 1.5),
+                borderRadius: BorderRadius.circular(12),
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderSide: BorderSide(
+                    color: bordercolor ?? AppColors.grey100, width: 1.5),
+                borderRadius: BorderRadius.circular(12),
+              ),
+              border: OutlineInputBorder(
+                borderSide:
+                    const BorderSide(color: AppColors.grey), // Grey border
+                borderRadius: BorderRadius.circular(12),
+              ),
+              prefixIcon: prefixIcon,
+              suffixIcon: suffixIcon,
+              hintText: hint,
+              fillColor: color ?? AppColors.white,
+              filled: true,
+              labelStyle: const TextStyle(
+                  color: AppColors.grey200), // Customize label text color
+              hintStyle: const TextStyle(color: AppColors.grey100)),
+          style: TextStyle(
+              color: AppColors.black,
+              fontSize: fontsize ?? 14.sp), // Customize text color
           cursorColor: AppColors.primary, // Customize cursor color
           validator:
               validator, // Use the provided validator function, or it will be null by default
@@ -79,40 +93,31 @@ class AppMultiLineTextFormField extends StatelessWidget {
   }
 }
 
-class AppTextFormField extends StatelessWidget {
-  const AppTextFormField({
-    super.key,
-    this.obscureText = false,
-    this.controller,
-    this.hint,
-    this.label,
-    this.prefixIcon,
-    this.suffixIcon,
-    this.keyboardType,
-    this.validator,
-    this.textInputAction,
-    this.onChanged,
-    this.identifier,
-    this.enabled,
-    this.borderRadius,
-    this.onFieldSubmitted,
-  });
+class NormalAppTextFormField extends StatelessWidget {
+  const NormalAppTextFormField(
+      {super.key,
+      this.obscureText = false,
+      this.controller,
+      this.hint,
+      this.label,
+      this.keyboardType,
+      this.fontsize,
+      this.validator,
+      this.onSaved,
+      this.color,
+      this.bordercolor});
 
   final bool obscureText;
-  final bool? enabled;
   final TextEditingController? controller;
   final String? hint;
   final String? label;
-  final Widget? prefixIcon;
-  final Widget? suffixIcon;
   final TextInputType? keyboardType;
   final FormFieldValidator<String>? validator;
-  final TextInputAction? textInputAction;
-  final void Function(String)? onChanged;
-  final String? identifier;
-  final double? borderRadius;
+  final Function? onSaved;
+  final Color? color;
+  final Color? bordercolor;
+  final double? fontsize;
 
-  final void Function(String)? onFieldSubmitted;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -120,61 +125,48 @@ class AppTextFormField extends StatelessWidget {
       children: [
         Visibility(
           visible: label != null,
-          child: SmallAppText(
+          child: MedAppText(
             label ?? '',
             color: AppColors.black,
-            fontSize: 16.sp,
+            fontSize: 18.sp,
           ),
         ),
-        vSpace(5),
-        Container(
-          decoration: BoxDecoration(
-            color: AppColors.white,
-            borderRadius: BorderRadius.circular(borderRadius ?? 10),
-          ),
-          child: TextFormField(
-            enabled: enabled,
-            onFieldSubmitted: onFieldSubmitted,
-            onChanged: onChanged,
-            autovalidateMode: AutovalidateMode.onUserInteraction,
-            obscureText: obscureText,
-            controller: controller,
-            keyboardType: keyboardType,
-
-            textInputAction: textInputAction ?? TextInputAction.next,
-            decoration: InputDecoration(
-              isDense: true,
-              contentPadding: simPad(15, 15),
-              border: OutlineInputBorder(
-                borderSide:
-                    const BorderSide(color: AppColors.grey), // Grey border
-                borderRadius: BorderRadius.circular(10),
-              ),
+        vSpace(10),
+        TextFormField(
+          autovalidateMode: AutovalidateMode.onUserInteraction,
+          obscureText: obscureText,
+          controller: controller,
+          keyboardType: keyboardType,
+          onSaved: onSaved as void Function(String?)?,
+          decoration: InputDecoration(
               focusedBorder: OutlineInputBorder(
-                borderSide:
-                    const BorderSide(color: AppColors.primary), // Grey border
-                borderRadius: BorderRadius.circular(10),
+                borderSide: BorderSide(
+                    color: bordercolor ?? AppColors.primary, width: 1.5),
+                borderRadius: BorderRadius.circular(12),
               ),
               enabledBorder: OutlineInputBorder(
                 borderSide: BorderSide(
-                    color: AppColors.grey.withAlpha(100)), // Grey border
-                borderRadius: BorderRadius.circular(10),
+                    color: bordercolor ?? AppColors.grey100, width: 1.5),
+                borderRadius: BorderRadius.circular(12),
               ),
-              prefixIcon: prefixIcon,
+              border: OutlineInputBorder(
+                borderSide:
+                    const BorderSide(color: AppColors.grey), // Grey border
 
-              suffixIcon: suffixIcon,
+                borderRadius: BorderRadius.circular(12),
+              ),
               hintText: hint,
-              hintStyle: TextStyle(color: AppColors.grey, fontSize: 12.sp),
+              fillColor: color ?? AppColors.white,
+              filled: true,
               labelStyle: const TextStyle(
-                  color: AppColors.black), // Customize label text color
-            ),
-            style:
-                const TextStyle(color: AppColors.black), // Customize text color
-
-            cursorColor: AppColors.primary, // Customize cursor color
-            validator:
-                validator, // Use the provided validator function, or it will be null by default
-          ),
+                  color: AppColors.grey200), // Customize label text color
+              hintStyle: const TextStyle(color: AppColors.grey100)),
+          style: TextStyle(
+              color: AppColors.black,
+              fontSize: fontsize ?? 14.sp), // Customize text color
+          cursorColor: AppColors.primary, // Customize cursor color
+          validator:
+              validator, // Use the provided validator function, or it will be null by default
         ),
       ],
     );
@@ -217,7 +209,7 @@ class AppRoundedTextFormField extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: AppColors.grey,
+        color: AppColors.grey400,
         borderRadius: BorderRadius.circular(40),
       ),
       child: TextFormField(
@@ -243,7 +235,7 @@ class AppRoundedTextFormField extends StatelessWidget {
           prefixIcon: prefixIcon,
           suffixIcon: suffixIcon,
           hintText: hint,
-          hintStyle: TextStyle(color: AppColors.grey, fontSize: 12.sp),
+          hintStyle: TextStyle(color: AppColors.grey200, fontSize: 12.sp),
           labelStyle: const TextStyle(
               color: AppColors.black), // Customize label text color
         ),
@@ -257,4 +249,48 @@ class AppRoundedTextFormField extends StatelessWidget {
   }
 }
 
-// ignore: must_be_immutable
+class AppPhoneTextField extends StatelessWidget {
+  const AppPhoneTextField({
+    super.key,
+    this.label,
+  });
+  final String? label;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Visibility(
+          visible: label != null,
+          child: MedAppText(
+            label ?? '',
+            color: AppColors.black,
+            fontSize: 18.sp,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        vSpace(10),
+        const IntlPhoneField(
+          decoration: InputDecoration(
+              // labelText: 'Phone Number',
+              border: OutlineInputBorder(
+                borderSide: BorderSide(color: AppColors.grey100),
+                borderRadius: BorderRadius.all(Radius.circular(12)),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: AppColors.primary, width: 1.5),
+                borderRadius: BorderRadius.all(Radius.circular(12)),
+              ),
+              enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: AppColors.grey100, width: 1.5),
+                  borderRadius: BorderRadius.all(Radius.circular(12)))),
+          cursorColor: AppColors.primary,
+          keyboardType: TextInputType.phone,
+          initialCountryCode: 'NG',
+          showDropdownIcon: true,
+        ),
+      ],
+    );
+  }
+}

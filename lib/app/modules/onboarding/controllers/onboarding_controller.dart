@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import '../../../routes/app_pages.dart';
 
 class OnboardingController extends GetxController {
- static OnboardingController get instance => Get.find();
+  static OnboardingController get instance => Get.find();
   // Variables
   final pageController = PageController();
   Rx<int> currentPageIndex = 0.obs;
@@ -25,7 +25,7 @@ class OnboardingController extends GetxController {
     if (currentPageIndex.value == 2) {
       final storage = AppLocalStorage();
       storage.saveData('IsFirstTime', false);
-      Get.offAllNamed(Routes.LOGIN);
+      Get.offAllNamed(Routes.SIGNUP);
     } else {
       int page = currentPageIndex.value + 1;
       pageController.jumpToPage(page);
@@ -36,9 +36,7 @@ class OnboardingController extends GetxController {
   void skipPage() {
     currentPageIndex.value = 2;
     pageController.jumpToPage(2);
-    
   }
-
 
   void increment() => currentPageIndex.value++;
 }
