@@ -1,4 +1,6 @@
-import 'package:flaury_provider/app/modules/signup/views/widgets/profileimg.dart';
+import 'package:flaury_provider/app/modules/signup/views/verification_view.dart';
+import 'package:flaury_provider/app/modules/signup/views/widgets/imageselect.dart';
+import 'package:flaury_provider/app/widgets/appbutton.dart';
 import 'package:flaury_provider/app/widgets/apptext.dart';
 import 'package:flutter/material.dart';
 
@@ -15,7 +17,7 @@ class OrginfoView extends GetView {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-            title: BigAppText('OrginfoView'),
+            title: BigAppText('Orginization Info'),
             titleSpacing: 1,
             leading: const Icon(Icons.arrow_back_ios)),
         body: SafeArea(
@@ -42,7 +44,14 @@ class OrginfoView extends GetView {
                     TeamandLocation(),
                     vSpace(15),
                     // Image
-                    Profileimg(),
+                    ImageSelector(),
+                    vSpace(50),
+                    // Continue
+                    AppElevatedButton(
+                        title: 'Continue',
+                        onPressed: () {
+                          Get.to(() => VerificationView());
+                        }),
                   ]),
             ),
           ),

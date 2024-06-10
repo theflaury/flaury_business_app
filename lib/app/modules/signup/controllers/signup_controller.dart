@@ -1,7 +1,9 @@
+import 'package:flaury_provider/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 
+import '../../../widgets/dialog.dart';
 import '../../../widgets/space.dart';
 
 class SignupController extends GetxController {
@@ -92,23 +94,18 @@ class SignupController extends GetxController {
     selectedTeamSize.value = teamSize;
   }
 
-
   void toggleNoBusinessAddress(bool value) {
     noBusinessAddress.value = value;
   }
 
-  @override
-  void onInit() {
-    super.onInit();
-  }
-
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
+  // Success Dialog
+  void showSuccessDialog() {
+    Get.dialog(
+      const SuccessDialog(),
+      barrierDismissible: false,
+    );
+    Future.delayed(const Duration(seconds: 5), () {
+      Get.offNamed(Routes.DASHBOARD); // Navigate to the next page
+    });
   }
 }

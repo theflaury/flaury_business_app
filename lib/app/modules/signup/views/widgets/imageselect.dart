@@ -6,10 +6,10 @@ import 'package:get/get.dart';
 
 import '../../../../utils/theme/colors.dart';
 
-class Profileimg extends StatelessWidget {
+class ImageSelector extends StatelessWidget {
   final SignupController controller = Get.put(SignupController());
 
-  Profileimg({super.key});
+  ImageSelector({super.key});
 
   @override
   Widget build(BuildContext context) {
