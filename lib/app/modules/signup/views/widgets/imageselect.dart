@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'package:flaury_provider/app/modules/signup/controllers/signup_controller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
