@@ -1,19 +1,18 @@
 import 'package:get/get.dart';
 
-class SplashscreenController extends GetxController {
-  //TODO: Implement SplashscreenController
+import '../../../routes/app_pages.dart';
 
+class SplashscreenController extends GetxController {
   final count = 0.obs;
 
-  // @override
-  // Future<void> onReady() async {
-  //   await Future.delayed(const Duration(seconds: 3));
+  @override
+  Future<void> onReady() async {
+    await Future.delayed(const Duration(seconds: 3));
 
-  //   Get.offAllNamed(Routes.ONBOARDING);
+    Get.offAllNamed(Routes.DASHBOARD);
 
-  //   super.onReady();
-  // }
-
+    super.onReady();
+  }
 
   void increment() => count.value++;
 }

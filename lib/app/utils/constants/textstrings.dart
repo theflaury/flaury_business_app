@@ -1,13 +1,15 @@
-class AppTextStrings{
-  static const String onboardingTitle1 = 'Choose your Product';
-  static const String onboardingTitle2 = 'Select Payment Method';
-  static const String onboardingTitle3 = 'Deleiver At Your Door Step';
+class AppTextStrings {
+  static const String onboardingTitle1 = 'Grow your business with Flaury';
+  static const String onboardingTitle2 = 'Easy way to collect payments';
+  static const String onboardingTitle3 = 'Expand your reach with Flaury';
 
-  static const String onboardingDescription1 = 'Welcome to a world of limitless Choices  - Your Perfect Product Awaits';
-  static const String onboardingDescription2 = 'For Seamless Transactions Choose your Payment Path - Your Convience , Our Priority';
-  static const String onboardingDescription3 = 'From Our Doorstep to Yours - Swift, Secure and Contatctless Delivery';
+  static const String onboardingDescription1 =
+      'Enjoy free management system to optimize your business';
+  static const String onboardingDescription2 =
+      'Enjoy instant payouts to your account and track your income all in one place.';
+  static const String onboardingDescription3 =
+      'Showcase your skills and services to thousands of customers.';
 
   static const String homeAppbarTitle = 'A Good Day For Shopping';
   static const String homeAppbarSubtitle = 'Raymond Reddignton';
-
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../utils/theme/colors.dart';
 import 'apptext.dart';
+import 'space.dart';
 
 class AppElevatedButton extends StatelessWidget {
   const AppElevatedButton({
@@ -108,17 +109,17 @@ class AppSecondaryElevatedButton extends StatelessWidget {
       width: double.infinity,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-            backgroundColor: AppColors.disabledPrimary,
+            backgroundColor: AppColors.primary,
             padding: simPad(0, 14),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10.0),
             ),
             elevation: 0,
-            disabledBackgroundColor: AppColors.disabledPrimary),
+            disabledBackgroundColor: AppColors.primary),
         onPressed: onPressed,
         child: SmallAppText(
           label,
-          color: AppColors.primaryDark,
+          color: AppColors.primary,
         ),
       ),
     );
