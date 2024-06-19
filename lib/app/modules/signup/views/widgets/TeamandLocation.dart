@@ -96,7 +96,7 @@ class TeamSizeOption extends StatelessWidget {
   Widget build(BuildContext context) {
     return RadioListTile<String>(
       activeColor: AppColors.primary,
-      
+
       contentPadding: EdgeInsets.zero, // Remove default padding
       title: SmallAppText(title),
       value: value,

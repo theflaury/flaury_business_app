@@ -1,4 +1,5 @@
 import 'package:flaury_provider/app/modules/signup/views/category_view.dart';
+import 'package:flaury_provider/app/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -18,19 +19,19 @@ class SignupView extends GetView<SignupController> {
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
-          padding: simPad(15, 15),
+          padding: simPad(AppSizes.md, AppSizes.md),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               BigAppText(
                 'Create Account',
               ),
-              vSpace(5),
+              vSpace(AppSizes.xs),
               SmallAppText(
                 'Enter your  email and password to register your account',
                 color: AppColors.grey,
               ),
-              vSpace(20),
+              vSpace(AppSizes.lg),
               Form(
                 //key: controller.formKey,
                 child: Wrap(
@@ -75,14 +76,14 @@ class SignupView extends GetView<SignupController> {
                   ],
                 ),
               ),
-              vSpace(30),
+              vSpace(AppSizes.lg * 1.5),
               AppElevatedButton(
                 title: 'Continue',
                 onPressed: () {
-                  Get.to(() =>  CategoryView());
+                  Get.to(() => CategoryView());
                 },
               ),
-              vSpace(50),
+              vSpace(AppSizes.lg * 3),
               // Already using Flaury
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -92,7 +93,7 @@ class SignupView extends GetView<SignupController> {
                     color: AppColors.grey,
                     fontSize: 17.sp,
                   ),
-                  hSpace(5),
+                  hSpace(AppSizes.xs),
                   GestureDetector(
                     onTap: () => Get.toNamed(Routes.LOGIN),
                     child: SmallAppText(

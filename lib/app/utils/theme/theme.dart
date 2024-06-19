@@ -51,7 +51,10 @@ class AppTheme {
         ),
         dividerColor: AppColors.grey,
         primaryColorLight: AppColors.white,
-        popupMenuTheme: const PopupMenuThemeData(color: AppColors.white));
+        popupMenuTheme: const PopupMenuThemeData(color: AppColors.white),
+      
+        );
+
   }
 }
 

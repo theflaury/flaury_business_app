@@ -5,8 +5,7 @@ class AppColors {
   static const Color primarylight = Color(0xFFFF7701);
   static const Color black = Color(0xFF000000);
   static const Color white = Color(0xFFFFFFFF);
-  static const Color textprimary = Color(0xFF333333);
-  static const Color textsecondary = Color(0xFF6C757D);
+  static const Color littlewhite = Color(0xFFF1F1F1);
   static const Color light = Color(0xFFF6F6F6);
   static const Color dark = Color(0xFF272727);
   static const Color borderprimary = Color(0xFFD9D9D9);
@@ -23,7 +22,7 @@ class AppColors {
   static const Color grey = Color(0xFF9E9E9E);
   static const Color darkgrey = Color(0xFF212121);
   static const Color softgrey = Color(0XFFbfa27d);
-   static const Color lightRed = Color(0xFFFEF0DD);
+  static const Color lightRed = Color(0xFFFEF0DD);
   static const Color black200 = Color(0xFFDDDDDD);
   static const Color grey100 = Color(0xFFDDDDDD);
   static const Color grey200 = Color(0xFFBBBBBB);

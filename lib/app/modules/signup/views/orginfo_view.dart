@@ -8,18 +8,24 @@ import 'package:get/get.dart';
 
 import '../../../widgets/space.dart';
 import '../../../widgets/textfields.dart';
+import '../controllers/signup_controller.dart';
 import 'widgets/TeamandLocation.dart';
 import 'widgets/description.dart';
 
 class OrginfoView extends GetView {
-  const OrginfoView({super.key});
+  OrginfoView({super.key});
+
+  final controller = Get.put(SignupController());
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-            title: BigAppText('Orginization Info'),
+            title: BigAppText('Organisation Info'),
             titleSpacing: 1,
-            leading: const Icon(Icons.arrow_back_ios)),
+            leading: IconButton(
+                onPressed: () => Get.back(),
+                icon: const Icon(Icons.arrow_back_ios))),
         body: SafeArea(
           child: SingleChildScrollView(
             child: Padding(
@@ -50,7 +56,10 @@ class OrginfoView extends GetView {
                     AppElevatedButton(
                         title: 'Continue',
                         onPressed: () {
-                          Get.to(() => VerificationView());
+                          controller.canProceed()
+                              ? Get.to(VerificationView())
+                              : Get.snackbar('Missing Fields',
+                                  'Please fill in: ${controller.missingFields()}');
                         }),
                   ]),
             ),

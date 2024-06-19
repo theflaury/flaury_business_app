@@ -90,12 +90,38 @@ class SignupController extends GetxController {
   var location = ''.obs;
   var noBusinessAddress = false.obs;
 
-  void selectTeamSize(String teamSize) {
-    selectedTeamSize.value = teamSize;
+  void selectTeamSize(String? teamSize) {
+    if (teamSize != null) {
+      selectedTeamSize.value = teamSize;
+    }
   }
 
-  void toggleNoBusinessAddress(bool value) {
-    noBusinessAddress.value = value;
+  void toggleNoBusinessAddress(bool? value) {
+    if (value != null) {
+      noBusinessAddress.value = value;
+    }
+  }
+
+  void setLocation(String? value) {
+    if (value != null) {
+      location.value = value;
+    }
+  }  
+
+  bool canProceed() {
+    return selectedTeamSize.value.isNotEmpty &&
+        (location.value.isNotEmpty != noBusinessAddress.value);
+  }
+
+  List<String> missingFields() {
+    List<String> missing = [];
+    if (selectedTeamSize.value.isEmpty) {
+      missing.add('Team Size');
+    }
+    if (location.value.isEmpty && !noBusinessAddress.value) {
+      missing.add('Location');
+    }
+    return missing;
   }
 
   // Success Dialog
@@ -104,8 +130,8 @@ class SignupController extends GetxController {
       const SuccessDialog(),
       barrierDismissible: false,
     );
-    Future.delayed(const Duration(seconds: 5), () {
-      Get.offNamed(Routes.DASHBOARD); // Navigate to the next page
+    Future.delayed(const Duration(seconds: 1), () {
+      Get.offAllNamed(Routes.DASHBOARD); // Navigate to the next page
     });
   }
 }

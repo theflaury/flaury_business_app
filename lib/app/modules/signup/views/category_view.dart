@@ -21,7 +21,9 @@ class CategoryView extends GetView {
       appBar: AppBar(
           titleSpacing: 1,
           title: BigAppText('Select A Category'),
-          leading: const Icon(Icons.arrow_back_ios)),
+          leading: IconButton(
+              onPressed: () => Get.back(),
+              icon: const Icon(Icons.arrow_back_ios))),
       body: SafeArea(
         child: Padding(
           padding: simPad(15, 15),
@@ -113,7 +115,7 @@ class CategoryView extends GetView {
                   title: 'Continue',
                   onPressed: () {
                     controller.selectedService.value != ''
-                        ? Get.to(() => const OrginfoView())
+                        ? Get.to(() =>  OrginfoView())
                         : Get.snackbar(
                             'No category selected', 'Please select a category');
                   }),

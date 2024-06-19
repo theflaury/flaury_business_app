@@ -30,7 +30,7 @@ Flaury is a beautifully designed mobile application built using the Flutter fram
 - **Flutter SDK**: Ensure you have Flutter installed on your machine.
 - **Get CLI**: Install Get CLI by running the following command in your terminal:
   ```bash
-  pub global activate get_cli
+  dart pub global activate get_cli
   ```
 
 ### Setup
