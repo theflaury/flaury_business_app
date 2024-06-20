@@ -7,12 +7,20 @@ import '../utils/theme/colors.dart';
 
 class SmallAppText extends StatelessWidget {
   SmallAppText(this.data,
-      {super.key, this.color, this.fontSize, this.fontWeight, this.alignment});
+      {super.key,
+      this.color,
+      this.fontSize,
+      this.fontWeight,
+      this.alignment,
+      this.overflow,
+      this.maxLines});
   String data;
   final Color? color;
   final double? fontSize;
   final FontWeight? fontWeight;
   final TextAlign? alignment;
+  final int? maxLines;
+  final TextOverflow? overflow;
   @override
   Widget build(BuildContext context) {
     return Text(
@@ -23,18 +31,28 @@ class SmallAppText extends StatelessWidget {
         fontSize: fontSize ?? 15.sp,
         fontWeight: fontWeight,
       ),
+      maxLines: maxLines,
+      overflow: overflow ?? TextOverflow.ellipsis,
     );
   }
 }
 
 class MedAppText extends StatelessWidget {
   MedAppText(this.data,
-      {super.key, this.color, this.fontSize, this.fontWeight, this.textAlign});
+      {super.key,
+      this.color,
+      this.fontSize,
+      this.fontWeight,
+      this.textAlign,
+      this.maxLines,
+      this.overflow});
   String data;
   final Color? color;
   final double? fontSize;
   final FontWeight? fontWeight;
   final TextAlign? textAlign;
+  final int? maxLines;
+  final TextOverflow? overflow;
   @override
   Widget build(BuildContext context) {
     return Text(
@@ -45,18 +63,28 @@ class MedAppText extends StatelessWidget {
         fontWeight: fontWeight ?? FontWeight.normal,
       ),
       textAlign: textAlign,
+      maxLines: maxLines,
+      overflow: overflow ?? TextOverflow.ellipsis,
     );
   }
 }
 
 class BigAppText extends StatelessWidget {
   BigAppText(this.data,
-      {super.key, this.color, this.fontSize, this.fontWeight, this.textAlign});
+      {super.key,
+      this.color,
+      this.fontSize,
+      this.fontWeight,
+      this.textAlign,
+      this.maxLines,
+      this.overflow});
   String data;
   final Color? color;
   final double? fontSize;
   final FontWeight? fontWeight;
   final TextAlign? textAlign;
+  final int? maxLines;
+  final TextOverflow? overflow;
   @override
   Widget build(BuildContext context) {
     return Text(
@@ -67,6 +95,8 @@ class BigAppText extends StatelessWidget {
         fontWeight: fontWeight ?? FontWeight.bold,
       ),
       textAlign: textAlign ?? TextAlign.left,
+      maxLines: maxLines,
+      overflow: overflow ?? TextOverflow.ellipsis,
     );
   }
 }

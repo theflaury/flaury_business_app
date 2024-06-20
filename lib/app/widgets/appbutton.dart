@@ -39,9 +39,11 @@ class AppOutlinedButton extends StatelessWidget {
     super.key,
     this.onPressed,
     required this.title,
+    this.radius,
   });
   final void Function()? onPressed;
   final String title;
+  final double? radius;
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +53,7 @@ class AppOutlinedButton extends StatelessWidget {
         side: const BorderSide(width: 1.0, color: AppColors.primary),
         minimumSize: Size(double.infinity, 50.h),
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10.r),
+          borderRadius: BorderRadius.circular(radius ?? 10.r),
         ),
       ),
       child: SmallAppText(
@@ -96,7 +98,6 @@ class NormalElevatedButton extends StatelessWidget {
   }
 }
 
-
 class AppSecondaryElevatedButton extends StatelessWidget {
   const AppSecondaryElevatedButton(
       {super.key, required this.label, this.onPressed});
@@ -121,6 +122,46 @@ class AppSecondaryElevatedButton extends StatelessWidget {
           label,
           color: AppColors.primary,
         ),
+      ),
+    );
+  }
+}
+
+class CustomButton extends StatelessWidget {
+  final String text;
+  final VoidCallback onPressed;
+  final Color color;
+  final Color textColor;
+  final Color? borderColor;
+  final double? radius;
+  final double? width;
+
+  const CustomButton({
+    super.key,
+    required this.text,
+    required this.onPressed,
+    required this.color,
+    required this.textColor,
+    this.borderColor,
+    this.radius,
+    this.width,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: width ?? 150.w,
+      child: ElevatedButton(
+        onPressed: onPressed,
+        style: ElevatedButton.styleFrom(
+          backgroundColor: color,
+          minimumSize: Size(20.w, 50.h),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(radius ?? 25.0),
+            side: BorderSide(color: borderColor ?? Colors.transparent),
+          ),
+        ),
+        child: SmallAppText(text, color: textColor),
       ),
     );
   }

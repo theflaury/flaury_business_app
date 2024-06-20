@@ -10,36 +10,40 @@ import 'widgets/categories.dart';
 
 class BookingsView extends GetView<BookingsController> {
   const BookingsView({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: BigAppText(' My Bookings'),
+        title: BigAppText('My Bookings'),
       ),
       body: SafeArea(
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              // Categories
-              Padding(
-                padding: simPad(AppSizes.sm, AppSizes.md),
-                child: const Wrap(
-                  spacing: 8,
-                  children: [
-                    Categories(
-                      data: 'Uploaded',
-                    ),
-                    Categories(
-                      data: 'Completed',
-                    ),
-                    Categories(
-                      data: 'Cancelled',
-                    ),
-                  ],
-                ),
+        child: Column(
+          children: [
+            // Categories
+            Padding(
+              padding: simPad(AppSizes.sm, AppSizes.md),
+              child: const Wrap(
+                spacing: 8,
+                children: [
+                  Categories(
+                    data: 'Uploaded',
+                  ),
+                  Categories(
+                    data: 'Completed',
+                  ),
+                  Categories(
+                    data: 'Cancelled',
+                  ),
+                ],
               ),
-            ],
-          ),
+            ),
+            Expanded(
+              child: Obx(() {
+                return controller.getCategoryView();
+              }),
+            ),
+          ],
         ),
       ),
     );
