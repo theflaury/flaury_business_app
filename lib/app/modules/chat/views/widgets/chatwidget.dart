@@ -1,12 +1,11 @@
 import 'package:flaury_provider/app/utils/constants/sizes.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:iconsax_flutter/iconsax_flutter.dart';
-
+import 'package:get/get.dart';
 import '../../../../utils/theme/colors.dart';
 import '../../../../widgets/apptext.dart';
 import '../../../../widgets/space.dart';
+import 'msg.dart';
 
 class ChatWidget extends StatelessWidget {
   const ChatWidget({
@@ -23,10 +22,8 @@ class ChatWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        // Handle tap gesture here (e.g., navigate to another page)
-        if (kDebugMode) {
-          print('Chat container tapped!');
-        }
+       
+        Get.to(() =>  Chat());
       },
       child: Center(
         child: Container(

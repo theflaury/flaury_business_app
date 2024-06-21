@@ -105,7 +105,7 @@ class NormalAppTextFormField extends StatelessWidget {
       this.validator,
       this.onSaved,
       this.color,
-      this.bordercolor});
+      this.bordercolor,  });
 
   final bool obscureText;
   final TextEditingController? controller;
